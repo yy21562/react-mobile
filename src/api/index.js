@@ -13,3 +13,5 @@ axios.interceptors.response.use(function (response) {
   });
 // 1 获取首页轮播图 + 推荐商品
 export const getGoods = () => axios.get("goods/gettopdata/goods");
+// 2 首页 商品列表数据
+export const getGoodsGroup = () => axios.get("goods/getgoodsgroup");
