@@ -5,7 +5,8 @@ class  Home extends Component {
     state= {
         sliderlist:[],
         imgHeight: 176,
-        toplist:[]
+        toplist:[],
+        goodslist: []
     }
     componentDidMount() {
         getGoods()
@@ -47,8 +48,70 @@ class  Home extends Component {
               />
             </a>
           ))}
-           </Carousel>
+          </Carousel>
         {/*轮播图结束*/}
+        {/* 推荐商品 开始 */}
+          <div className="recommend_row">
+            <div className="recommend_row_title">推荐商品</div>
+            <div className="recommend_row_content">
+              {
+                this.state.toplist.map(v =>
+                  <a href = "#" className="top_item" key={v.id} >
+                  <div className="top_item_img_wrap">
+                    <img src={ v.img_url } alt="" />
+                  </div>
+                  <div className="top_item_name">
+                    <p>
+                      {v.title}
+                    </p>
+                  </div>
+                  </a>
+                )
+              }
+            </div>
+            <style jsx>
+              {`.recommend_row_title {
+                background-color:  #f5f5f9;
+                color: #666;
+                font-size: 14px;
+                padding: 8px;
+              }
+                .recommend_row_content {
+                    .top_item {
+                        display: flex;
+                        background-color: #fff;
+                        border-bottom: 1px solid #666;
+                        .top_item_img_wrap {
+                            width: 20%;
+                            padding: 20px;
+                        }
+                        .top_item_name {
+                            width: 80%;
+                            display: flex;
+                            align-items: center;
+                            p {
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+            `}
+          </style>
+          </div>
+        {/* 推荐商品 结束 */}
+        {/* 商品列表 开始 */}
+        <div className="goods_list">
+          {this.state.goodslist.map(v=> {
+            return (
+              <div className="goods_item" key={v.level1cateid}>
+                <div className="goods_title">{v.catetitle}</div>
+              </div>
+            )
+          })}
+
+        </div>
         </Fragment>
         );
     } 

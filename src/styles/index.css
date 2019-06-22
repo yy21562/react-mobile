@@ -1,0 +1,8 @@
+img{
+    display: block;
+    width: 100%;
+  }
+  a{
+    /* 继承父元素的字体颜色 */
+    color: inherit;
+  }
