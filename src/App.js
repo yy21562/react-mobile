@@ -1,6 +1,5 @@
 import React,{ Fragment } from 'react';
 import "./styles/App.css"
-import { TabBar } from 'antd-mobile';
 import  MyLayout  from "./components/MyLayout";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
