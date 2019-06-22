@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { getGoods, getGoodsGroup } from "../api";
 import { Carousel } from 'antd-mobile';
+import { withRouter } from "react-router-dom";
 class  Home extends Component {
     state= {
         sliderlist:[],
@@ -11,7 +12,7 @@ class  Home extends Component {
     componentDidMount() {
         getGoods()
           .then(res => {
-            //   console.log(res);
+              console.log(res);
             if (res.status === 0) {
               //  成功
               this.setState({
@@ -19,7 +20,7 @@ class  Home extends Component {
                 toplist: res.message.toplist
               });
             }
-          })
+        })
         getGoodsGroup()
         .then(res => {
           this.setState({ goodslist: res.message });
@@ -33,11 +34,12 @@ class  Home extends Component {
         <Carousel
           autoplay
           infinite
-        >
+        > 
           {this.state.sliderlist.map(val => (
             <a
               key={val.id}
-              href="http://www.alipay.com"
+              href="javascript:;"
+              onClick={() => { this.props.history.push("/GoodsDetail/" + val.id) }}
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
               <img
@@ -60,7 +62,8 @@ class  Home extends Component {
             <div className="recommend_row_content">
               {
                 this.state.toplist.map(v =>
-                  <a href = "#" className="top_item" key={v.id} >
+                  <a href = "javascript:;" 
+                  onClick={() => { this.props.history.push("/GoodsDetail/" + v.id) }} className="top_item" key={v.id} > 
                   <div className="top_item_img_wrap">
                     <img src={ v.img_url } alt="" />
                   </div>
@@ -113,7 +116,8 @@ class  Home extends Component {
                 <div className="goods_title">{v.catetitle}</div>
                 <div className="goods_content">
                   {v.datas.map(v2 =>
-                    <a href="#" key={v2.artID}>
+                    <a href="javascript:;"
+                    onClick={() => { this.props.history.push("/GoodsDetail/" + v2.artID) }} key={v2.artID} >
                       <img src={v2.img_url} alt='' />
                       <div className="art_title">{v2.artTitle}</div>
                       <div className="goods_price">
@@ -185,8 +189,9 @@ class  Home extends Component {
             }
             `}</style>
         </div>
+         {/* 商品列表 结束 */}
         </Fragment>
         );
     } 
 }
-export default Home;
+export default withRouter(Home);

@@ -5,6 +5,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Mine from "./pages/Mine";
+import GoodsDetail from "./pages/GoodsDetail";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,8 @@ class App extends React.Component {
 
           {/* 登录 */}
           {/* <Route path="/login" component={Login}></Route> */}
+           {/* 商品的详情 */}
+           <Route path="/GoodsDetail/:id"  component={GoodsDetail} ></Route>
         
       </Router>
      </Fragment>
