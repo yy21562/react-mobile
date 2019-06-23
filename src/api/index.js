@@ -15,3 +15,5 @@ axios.interceptors.response.use(function (response) {
 export const getGoods = () => axios.get("goods/gettopdata/goods");
 // 2 首页 商品列表数据
 export const getGoodsGroup = () => axios.get("goods/getgoodsgroup");
+// 3 商品详情 获取
+export const getGoodsInfo=(id)=>axios.get("goods/getgoodsinfo/"+id);

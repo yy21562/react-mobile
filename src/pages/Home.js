@@ -63,7 +63,7 @@ class  Home extends Component {
               {
                 this.state.toplist.map(v =>
                   <a href = "javascript:;" 
-                  onClick={() => { this.props.history.push("/GoodsDetail/" + v.id) }} className="top_item" key={v.id} > 
+                  onClick={() => { this.props.history.push("/GoodsDetail/" + v.id) }}  className="top_item" key={v.id} > 
                   <div className="top_item_img_wrap">
                     <img src={ v.img_url } alt="" />
                   </div>
