@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { TabBar } from 'antd-mobile';
-
 class MyLayout extends React.Component {
   constructor(props) {
     super(props);

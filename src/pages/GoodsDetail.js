@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, Icon, Carousel } from 'antd-mobile';
+import { NavBar, Icon, Carousel,Toast } from 'antd-mobile';
 import { getGoodsInfo } from "../api";
+import  { cart_add  } from "../store/actionCreator";
+import { connect } from "react-redux";
 class GoodsDetail extends Component {
     state = {
       imglist: [],
@@ -200,5 +202,27 @@ class GoodsDetail extends Component {
         )
     }
 }
- 
-export default GoodsDetail;
+const getNum=(arr) =>{
+  let num = 0;
+  arr.forEach(val => {
+    num += val.num
+  });
+  return num 
+}
+const mapStateToProps = (state) => {
+  // 种类的数量也等于购物车的长度 
+  return {
+    cartLength: getNum(state.cartReducer.cartList)
+  //  cartLength: state.cartReducer.cartList.length
+  }
+}
+ // 将 行为映射到 props中
+const mapDispatch = (dispatch)=>{
+  return {
+    handleCartAdd:(goodsObj)=>{
+      dispatch(cart_add(goodsObj));
+      Toast.info('添加成功');
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatch)(GoodsDetail);
