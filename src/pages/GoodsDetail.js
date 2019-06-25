@@ -138,7 +138,7 @@ class GoodsDetail extends Component {
             <span className="iconfont icon-kefu"></span>
             <p>客服</p>
           </div>  
-          <div className="btm_item btm_cart">
+          <div className="btm_item btm_cart" onClick={()=>{this.props.history.push("/Cart")}}>
             <span className="iconfont icon-gouwuche"></span>
             <p>购物车</p>
             <span className="badge" style={{display:this.props.cartLength?"block":"none"}} >{this.props.cartLength}</span>
@@ -216,6 +216,9 @@ const mapStateToProps = (state) => {
   //  cartLength: state.cartReducer.cartList.length
   }
 }
+
+
+
  // 将 行为映射到 props中
 const mapDispatch = (dispatch)=>{
   return {
